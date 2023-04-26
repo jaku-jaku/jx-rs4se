@@ -1,7 +1,7 @@
 <launch>
   <!-- INTEL REALSENSE D435i-->
   <node pkg="rs4se"
-      type="intel_d455"
+      type="intel_d435i"
       name="rs"
       required="true"
       output="screen">
