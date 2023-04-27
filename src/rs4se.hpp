@@ -576,7 +576,7 @@ struct rs_rgbd_module_t {
   }
 };
 
-struct intel_d435i_t {
+struct intel_d455_t {
   bool is_running_ = false;
   bool configured_ = false;
 
@@ -590,7 +590,7 @@ struct intel_d435i_t {
   rs_motion_module_config_t motion_conf_;
   std::function<void(const rs2::frame &frame)> cb_;
 
-  intel_d435i_t(rs2::device &device,
+  intel_d455_t(rs2::device &device,
                 const rs_rgbd_module_config_t &rgbd_config,
                 const rs_motion_module_config_t &motion_config,
                 const std::function<void(const rs2::frame &frame)> cb)
@@ -599,7 +599,7 @@ struct intel_d435i_t {
     configure();
   }
 
-  ~intel_d435i_t() {
+  ~intel_d455_t() {
     if (is_running_) {
       pipe_.stop();
       is_running_ = false;

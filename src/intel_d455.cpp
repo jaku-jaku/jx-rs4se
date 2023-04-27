@@ -123,7 +123,7 @@ static sensor_msgs::Imu create_imu_msg(const double ts,
   return msg;
 }
 
-struct intel_d435i_node_t {
+struct intel_d455_node_t {
   image_transport::Publisher rgb0_pub_;
   image_transport::Publisher ir0_pub_;
   image_transport::Publisher ir1_pub_;
@@ -135,7 +135,7 @@ struct intel_d435i_node_t {
   rs_motion_module_config_t motion_config_;
   rs_rgbd_module_config_t rgbd_config_;
 
-  intel_d435i_node_t(const std::string &nn) {
+  intel_d455_node_t(const std::string &nn) {
     ros::NodeHandle nh;
 
     // ROS params
@@ -313,7 +313,7 @@ struct intel_d435i_node_t {
 
     // Connect and stream
     rs2::device device = rs2_connect();
-    intel_d435i_t sensor(device, rgbd_config_, motion_config_, cb);
+    intel_d455_t sensor(device, rgbd_config_, motion_config_, cb);
 
     // Pipelines are threads so we need a blocking loop
     signal(SIGINT, signal_handler);
@@ -331,7 +331,7 @@ int main(int argc, char **argv) {
   }
 
   // Start ROS node
-  intel_d435i_node_t node(node_name);
+  intel_d455_node_t node(node_name);
   node.stream();
 
   return 0;

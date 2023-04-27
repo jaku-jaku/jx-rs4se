@@ -38,8 +38,8 @@ SET(DEPS
   ${catkin_LIBRARIES}
 )
 
-ADD_EXECUTABLE(intel_d435i src/intel_d435i.cpp)
-TARGET_LINK_LIBRARIES(intel_d435i ${DEPS})
+ADD_EXECUTABLE(intel_d455 src/intel_d455.cpp)
+TARGET_LINK_LIBRARIES(intel_d455 ${DEPS})
 
 ADD_EXECUTABLE(test_rs4se src/test_rs4se.cpp)
 TARGET_LINK_LIBRARIES(test_rs4se ${DEPS})

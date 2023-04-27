@@ -55,10 +55,10 @@ catkin build
 
 ```
 source <PATH TO YOUR CATKIN WS>/devel/setup.bash
-roslaunch rs4se intel_d435i.launch
+roslaunch rs4se intel_d455i.launch
 ```
 
-The above launch file will launch the `intel_d435i` ros node and publish the
+The above launch file will launch the `intel_d455i` ros node and publish the
 following topics:
 
 ```

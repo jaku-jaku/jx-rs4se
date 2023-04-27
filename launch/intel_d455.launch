@@ -1,32 +1,40 @@
 <launch>
-  <!-- INTEL REALSENSE D435i-->
+  <arg name="debug" default="false" />
+  <arg unless="$(arg debug)" name="launch_prefix" value="" />
+  <arg     if="$(arg debug)" name="launch_prefix" value="gdb --ex run --args" />
+<!-- rosrun  valgrind -leak-check=full rs4se test_rs4se -->
+<!-- rosrun  gdb -ex=run -ex=bt -ex=quit rs4se test_rs4se -->
+  <!-- INTEL REALSENSE D455-->
   <node pkg="rs4se"
-      type="intel_d435i"
+      type="intel_d455"
       name="rs"
       required="true"
-      output="screen">
+      output="screen" launch-prefix="$(arg launch_prefix)" >
     <param name="global_time" type="bool" value="true" />
-    <param name="correct_ts" type="bool" value="true" />
+    <param name="correct_ts"  type="bool" value="true" />
 
     <!-- RGBD -->
-    <param name="enable_rgb" type="bool" value="true" />
-    <param name="enable_ir" type="bool" value="true" />
-    <param name="enable_depth" type="bool" value="true" />
-    <param name="enable_emitter" type="bool" value="false" />
-    <param name="rgb_width" value="640"/>
-    <param name="rgb_height" value="480"/>
-    <param name="rgb_frame_rate" value="30"/>
-    <param name="rgb_format" type="str" value="RGB8" />
-    <param name="rgb_exposure" type="double" value="1000" />
-    <param name="ir_width" type="int" value="640" />
-    <param name="ir_height" type="int" value="480" />
-    <param name="ir_format" type="str" value="Y8" />
-    <param name="ir_frame_rate" type="int" value="30" />
-    <param name="ir_exposure" type="double" value="20000" />
-    <param name="depth_width" type="int" value="640" />
-    <param name="depth_height" type="int" value="480" />
-    <param name="depth_format" type="str" value="Z16" />
-    <param name="depth_frame_rate" type="int" value="30" />
+    <param name="enable_rgb"       type="bool"      value="true" />
+    <param name="enable_ir"        type="bool"      value="true" />
+    <param name="enable_depth"     type="bool"      value="false" />
+    <param name="enable_emitter"   type="bool"      value="false" />
+
+    <param name="rgb_width"        type="int"       value="1280"/>
+    <param name="rgb_height"       type="int"       value="800"/>
+    <param name="rgb_format"       type="str"       value="RGB8" />
+    <param name="rgb_frame_rate"   type="int"       value="30"/>
+    <param name="rgb_exposure"     type="double"    value="1000" />
+    
+    <param name="ir_width"         type="int"       value="1280" />
+    <param name="ir_height"        type="int"       value="800" />
+    <param name="ir_format"        type="str"       value="Y8" />
+    <param name="ir_frame_rate"    type="int"       value="30" />
+    <param name="ir_exposure"      type="double"    value="20000" />
+    
+    <param name="depth_width"      type="int"       value="1280" />
+    <param name="depth_height"     type="int"       value="720" />
+    <param name="depth_format"     type="str"       value="Z16" />
+    <param name="depth_frame_rate" type="int"       value="-1" />
 
     <!-- MOTION -->
     <param name="enable_motion" type="bool" value="true" />
